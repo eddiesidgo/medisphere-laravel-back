@@ -30,7 +30,16 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //api endopint to create a new paciente resource
+        $paciente = new Paciente();
+        $paciente->nombre = $request->nombre;
+        $paciente->apellido = $request->apellido;
+        $paciente->dui = $request->dui;
+        $paciente->fecha_nacimiento = $request->fecha_nacimiento;
+        $paciente->genero = $request->genero;
+        $paciente->save();
+
+        return response()->json($paciente, 201);
     }
 
     /**

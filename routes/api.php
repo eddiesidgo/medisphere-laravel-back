@@ -26,6 +26,8 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::get('pacientes', [PacienteController::class, 'index']);
 
+Route::post('pacientes/create', [PacienteController::class, 'store']);
+
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
