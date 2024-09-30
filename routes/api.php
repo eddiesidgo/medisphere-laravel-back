@@ -28,6 +28,10 @@ Route::get('pacientes', [PacienteController::class, 'index']);
 
 Route::post('pacientes/create', [PacienteController::class, 'store']);
 
+Route::put('pacientes/{id}', [PacienteController::class, 'edit']);
+
+Route::delete('pacientes/{id}', [PacienteController::class, 'destroy']);
+
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
