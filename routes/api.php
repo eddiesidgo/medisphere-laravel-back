@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CitaController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PacienteController;
 
@@ -40,6 +41,8 @@ Route::post('doctores/create', [DoctorController::class, 'store']);
 Route::put('doctores/{id}', [DoctorController::class, 'edit']);
 
 Route::delete('doctores/{id}', [DoctorController::class, 'destroy']);
+
+Route::get('citas', [CitaController::class, 'index']);
 
 
 
