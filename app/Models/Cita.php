@@ -11,7 +11,7 @@ class Cita extends Model
 {
     use HasFactory;
     protected $table = 'citas';
-    protected $fillable = ['fecha', 'estado', 'paciente_id', 'doctor_id'];
+    protected $fillable = ['title', 'date', 'estado', 'paciente_id', 'doctor_id'];
 
      /**
      * Definir la relación de la cita con el paciente.

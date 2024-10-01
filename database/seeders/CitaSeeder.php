@@ -17,21 +17,24 @@ class CitaSeeder extends Seeder
         Cita::create([
             'paciente_id' => 1,
             'doctor_id' => 1,
-            'fecha' => '2022-01-15 10:00:00', //yyyy-mm-dd hh:mm:ss
+            'title' => 'Cita 1',
+            'date' => '2024-10-01 10:00:00', //yyyy-mm-dd hh:mm:ss
             'estado' => 'pendiente',
         ]);
 
         Cita::create([
             'paciente_id' => 2,
             'doctor_id' => 2,
-            'fecha' => '2022-01-20 12:00:00',
+            'title' => 'Cita 2',
+            'date' => '2024-10-02 12:00:00',
             'estado' => 'confirmada',
         ]);
 
         Cita::create([
             'paciente_id' => 3,
             'doctor_id' => 3,
-            'fecha' => '2022-01-25 14:00:00',
+            'title' => 'Cita 3',
+            'date' => '2024-10-03 14:00:00',
             'estado' => 'cancelada',
         ]);
     }

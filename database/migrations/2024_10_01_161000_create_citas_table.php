@@ -26,7 +26,8 @@ return new class extends Migration
                   ->references('id')->on('doctors')
                   ->onDelete('set null'); // Opcional: establece doctor_id en null si el doctor se elimina
 
-            $table->dateTime('fecha');
+            $table->string('title');
+            $table->dateTime('date');
             $table->string('estado');
             $table->timestamp('created_at', 0)->useCurrent();
             $table->timestamp('updated_at', 0)->useCurrent();

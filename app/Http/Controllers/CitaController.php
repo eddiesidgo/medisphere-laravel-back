@@ -38,7 +38,8 @@ class CitaController extends Controller
         $cita = new Cita();
         $cita->doctor_id = $request->doctor_id;
         $cita->paciente_id = $request->paciente_id;
-        $cita->fecha = $request->fecha;
+        $cita->title = $request->title;
+        $cita->date = $request->date;
         $cita->estado = $request->estado;
         $cita->save();
 
@@ -67,7 +68,8 @@ class CitaController extends Controller
 
         $cita->doctor_id = $request->doctor_id;
         $cita->paciente_id = $request->paciente_id;
-        $cita->fecha = $request->fecha;
+        $cita->title = $request->title;
+        $cita->date = $request->date;
         $cita->estado = $request->estado;
         $cita->save();
 
