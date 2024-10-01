@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cita;
+use App\Models\Doctor;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 
 class CitaController extends Controller
@@ -13,7 +15,9 @@ class CitaController extends Controller
     public function index()
     {
         //
-        return Cita::all();
+        $citas = Cita::with(['doctor', 'paciente'])->get();
+        return response()->json($citas, 200);
+        // return Cita::all();
         // return response()->json(Cita::all(), 200);
     }
 
