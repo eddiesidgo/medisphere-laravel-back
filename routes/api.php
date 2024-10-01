@@ -44,6 +44,12 @@ Route::delete('doctores/{id}', [DoctorController::class, 'destroy']);
 
 Route::get('citas', [CitaController::class, 'index']);
 
+Route::post('citas/create', [CitaController::class, 'store']);
+
+Route::put('citas/{id}', [CitaController::class, 'edit']);
+
+Route::delete('citas/{id}', [CitaController::class, 'destroy']);
+
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {

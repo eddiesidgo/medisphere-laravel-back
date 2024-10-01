@@ -35,6 +35,14 @@ class CitaController extends Controller
     public function store(Request $request)
     {
         //
+        $cita = new Cita();
+        $cita->doctor_id = $request->doctor_id;
+        $cita->paciente_id = $request->paciente_id;
+        $cita->fecha = $request->fecha;
+        $cita->estado = $request->estado;
+        $cita->save();
+
+        return response()->json($cita, 201);
     }
 
     /**
@@ -48,9 +56,24 @@ class CitaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cita $cita)
+    public function edit(Request $request, $id)
     {
         //
+        $cita = Cita::find($id);
+
+        if (!$cita) {
+            return response()->json(['message' => 'Cita no encontrada'], 404);
+        }
+
+        $cita->doctor_id = $request->doctor_id;
+        $cita->paciente_id = $request->paciente_id;
+        $cita->fecha = $request->fecha;
+        $cita->estado = $request->estado;
+        $cita->save();
+
+        return response()->json($cita, 200);
+
+
     }
 
     /**
@@ -64,8 +87,17 @@ class CitaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cita $cita)
+    public function destroy($id)
     {
         //
+        $cita = Cita::find($id);
+
+        if (!$cita) {
+            return response()->json(['message' => 'Cita no encontrada'], 404);
+        }
+
+        $cita->delete();
+
+        return response()->json(['message' => 'Cita eliminada exitosamente'], 204);
     }
 }
