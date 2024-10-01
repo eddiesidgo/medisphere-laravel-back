@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PacienteController;
 
 /*
@@ -31,6 +32,14 @@ Route::post('pacientes/create', [PacienteController::class, 'store']);
 Route::put('pacientes/{id}', [PacienteController::class, 'edit']);
 
 Route::delete('pacientes/{id}', [PacienteController::class, 'destroy']);
+
+Route::get('doctores', [DoctorController::class, 'index']);
+
+Route::post('doctores/create', [DoctorController::class, 'store']);
+
+Route::put('doctores/{id}', [DoctorController::class, 'edit']);
+
+Route::delete('doctores/{id}', [DoctorController::class, 'destroy']);
 
 
 

@@ -65,7 +65,7 @@ class PacienteController extends Controller
         $validatedData = $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'dui' => 'required|unique:pacientes,dui,' . $id,  // Asegúrate de que al actualizar se excluya el ID actual            'fecha_nacimiento' => 'required|date',
+            'dui' => 'required|unique:pacientes,dui,' . $id,  // al actualizar se excluye el ID actual            'fecha_nacimiento' => 'required|date',
             'genero' => 'required|string',
         ]);
 
