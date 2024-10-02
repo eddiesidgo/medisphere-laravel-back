@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use App\Models\Doctor;
+use App\Models\Consulta;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 
@@ -35,15 +36,38 @@ class CitaController extends Controller
     public function store(Request $request)
     {
         //
-        $cita = new Cita();
-        $cita->doctor_id = $request->doctor_id;
-        $cita->paciente_id = $request->paciente_id;
-        $cita->title = $request->title;
-        $cita->date = $request->date;
-        $cita->estado = $request->estado;
-        $cita->save();
+        // $cita = new Cita();
+        // $cita->doctor_id = $request->doctor_id;
+        // $cita->paciente_id = $request->paciente_id;
+        // $cita->title = $request->title;
+        // $cita->date = $request->date;
+        // $cita->estado = $request->estado;
+        // $cita->save();
 
-        return response()->json($cita, 201);
+        // Validación de los datos de la cita
+        $validatedData = $request->validate([
+            'doctor_id' => 'required|exists:doctors,id',
+            'paciente_id' => 'required|exists:pacientes,id',
+            'title' => 'required|string',
+            'date' => 'required|date',
+            'estado' => 'required|string',
+        ]);
+
+
+        // Crear la cita
+        $cita = Cita::create($validatedData);
+
+        // Crear automáticamente una consulta asociada a la cita
+        $consulta = Consulta::create([
+            'cita_id' => $cita->id,
+            'diagnostico' => 'Pendiente de consulta' // Valor por defecto
+        ]);
+
+        return response()->json([
+            'message' => 'Cita y consulta creadas exitosamente',
+            'cita' => $cita,
+            'consulta' => $consulta
+        ], 201);
     }
 
     /**
