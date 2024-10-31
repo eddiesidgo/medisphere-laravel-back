@@ -6,14 +6,14 @@ use App\Models\Cita;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Paciente extends Model
+class Doctor extends Model
 {
     use HasFactory;
-    protected $table = 'pacientes';
-    protected $fillable = ['nombre', 'apellido', 'dui', 'fecha_nacimiento', 'genero'];
+    protected $table = 'doctors';
+    protected $fillable = ['nombre', 'apellido', 'especialidad'];
 
-     /**
-     * Un paciente puede tener muchas citas.
+    /**
+     * Un doctor puede tener muchas citas.
      */
     public function citas()
     {
