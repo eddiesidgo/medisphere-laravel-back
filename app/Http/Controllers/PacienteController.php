@@ -5,9 +5,33 @@ namespace App\Http\Controllers;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class PacienteController extends Controller
 {
+
+
+
+    public function buscar_pacientes(Request $request)
+{
+    $query = $request->input('query');
+    
+    if (!empty($query)) { // Verifica que $query no esté vacío
+        DB::enableQueryLog(); // Habilita el registro de consultas
+
+        $Pacientes = Paciente::where('nombre', 'LIKE', "%{$query}%")
+                          ->limit(10)
+                          ->get();
+
+        // dd(DB::getQueryLog()); // Usa esto solo para depuración temporal
+        return response()->json($Pacientes); // Devuelve los resultados encontrados
+    }
+
+    return response()->json([]); // Retorna una respuesta vacía si $query está vacío
+}
+
+
+
     /**
      * Display a listing of the resource.
      */
