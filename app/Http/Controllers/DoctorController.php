@@ -4,9 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class DoctorController extends Controller
 {
+
+    public function buscar_doctors(Request $request)
+    {
+        $query = $request->input('query');
+        
+        if (empty($query)) {
+            return response()->json(['error' => 'El campo de búsqueda está vacío'], 400);
+        }
+        
+        DB::enableQueryLog(); // Habilita el registro de consultas
+    
+        $doctores = Doctor::where('nombre', 'LIKE', "%{$query}%")
+                          ->limit(10)
+                          ->get();
+    
+        return response()->json($doctores); // Devuelve los resultados encontrados
+    }
+    
+    
+    
+
     /**
      * Display a listing of the resource.
      */

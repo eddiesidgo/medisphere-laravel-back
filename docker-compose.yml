@@ -1,0 +1,89 @@
+
+
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     volumes:
+#       - .:/var/www
+#     networks:
+#       - laravel
+
+#   webserver:
+#     image: nginx:alpine
+#     volumes:
+#       - .:/var/www
+#       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+#     ports:
+#       - "80:80"
+#     networks:
+#       - laravel
+
+#   db:
+#   #En este apartado se configura la DDBB
+#     image: mysql:8.0
+#     environment:
+#     #Se coloca "yes" debido a que el mysql no contiene contraseña para el user root
+#       MYSQL_ROOT_PASSWORD: 'yes'
+#       #Nombre de la DDBB
+#       MYSQL_DATABASE: medisphere_01
+#         #User de mysql
+#       MYSQL_USER: root
+#           #Contraseña si en dado caso esta contiene una
+#       MYSQL_PASSWORD: ""
+#     volumes:
+#       - db_data:/var/lib/mysql
+#     networks:
+#       - laravel
+
+# networks:
+#   laravel:
+
+# volumes:
+#   db_data:
+
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www
+    networks:
+      - laravel
+
+  webserver:
+    image: nginx:alpine
+    volumes:
+      - .:/var/www
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    networks:
+      - laravel
+
+  db:
+  #En este apartado se configura la DDBB
+    image: mysql:8.0
+    environment:
+    #Se coloca "yes" debido a que el mysql no contiene contraseña para el user root
+      MYSQL_ROOT_PASSWORD: 'yes'
+      #Nombre de la DDBB
+      MYSQL_DATABASE: medisphere_01
+        #User de mysql
+      MYSQL_USER: root
+          #Contraseña si en dado caso esta contiene una
+      MYSQL_PASSWORD: ""
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - laravel
+
+networks:
+  laravel:
+
+volumes:
+  db_data:
+

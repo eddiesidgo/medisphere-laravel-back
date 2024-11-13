@@ -99,29 +99,18 @@ class AuthController extends Controller
                 ], 401);
             }
         }
-
-        // {
-        //     if (!Auth::attempt($request->only('email', 'password')))
-        //     {
-        //         return response()->json(['error' => 'Unauthorized'], 401);
-        //     }
-    
-        //     $user = User::where('email', $request['email'])->firstOrFail();
-        //     $token = $user->createToken('authToken')->plainTextToken;
-    
-        //     return response()
-        //         ->json(['message' => 'Hi '.$user->name,'access_token' => $token,'token_type' => 'Bearer','data'=>$user]);
-    
-        // }
-    
+  
     }
-
 
     public function logout()
     {
-        auth()->user()->tokens()->delete();
-        return [
-            'message' => 'Logged out successfully'
-        ];
+        if (auth()->check()) {
+            auth()->user()->tokens()->delete();
+            return [
+                'message' => 'Logged out successfully'
+            ];
+        }
+        return response()->json(['error' => 'User not authenticated'], 401);
     }
+
 }

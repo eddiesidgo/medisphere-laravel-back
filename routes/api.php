@@ -29,6 +29,7 @@ Route::post('register', [AuthController::class, 'register']);
 
 Route::post('login', [AuthController::class, 'login']);
 
+
 Route::get('pacientes', [PacienteController::class, 'index']);
 
 Route::post('pacientes/create', [PacienteController::class, 'store']);
@@ -44,6 +45,11 @@ Route::post('doctores/create', [DoctorController::class, 'store']);
 Route::put('doctores/{id}', [DoctorController::class, 'edit']);
 
 Route::delete('doctores/{id}', [DoctorController::class, 'destroy']);
+
+
+Route::get('/buscar-pacientes', [PacienteController::class, 'buscar_pacientes']);
+
+Route::get('/buscar-doctores', [DoctorController::class, 'buscar_doctors']);
 
 Route::get('citas', [CitaController::class, 'index']);
 
@@ -66,8 +72,6 @@ Route::put('/recetas/{id}', [RecetaController::class, 'edit']);
 // Rutas para Exámenes
 Route::post('/examenes', [ExamenController::class, 'store']);
 Route::put('/examenes/{id}', [ExamenController::class, 'edit']);
-
-
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
 
