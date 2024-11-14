@@ -35,9 +35,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ConsultaSeeder::class);
 
-        $this->call(RecetaSeeder::class);
+        // $this->call(RecetaSeeder::class);
 
-        $this->call(ExamenSeeder::class);
+        // $this->call(ExamenSeeder::class);
 
     }
 }
