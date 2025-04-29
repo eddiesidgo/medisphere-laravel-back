@@ -18,7 +18,8 @@ class Examen extends Model
     'precio',
     'unidad_equi',
     'iva',
-    'afecta'
+    'afecta',
+    'movimeinto'
 
     ];
 
