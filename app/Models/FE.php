@@ -19,7 +19,9 @@ class Examen extends Model
     'unidad_equi',
     'iva',
     'afecta',
-    'movimeinto'
+    'movimeinto',
+     'condition'
+    
 
     ];
 
